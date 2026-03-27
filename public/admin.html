@@ -137,8 +137,10 @@
        return;
 }
 
-        // запускаем админку
-        await adminManager.init();
+        // небольшая задержка для загрузки данных
+setTimeout(async () => {
+    await adminManager.init();
+}, 500);;
 
     } catch (e) {
         console.error('Admin init error:', e);
