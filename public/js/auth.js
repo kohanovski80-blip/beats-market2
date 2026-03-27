@@ -65,6 +65,9 @@ class AuthManager {
                 }
                 
                 this.triggerCallbacks('login', this.currentUser);
+
+                window.location.reload();
+                
                 return { success: true, user: this.currentUser };
             } else {
                 return { success: false, error: data.error || 'Login failed' };
