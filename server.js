@@ -1617,14 +1617,15 @@ app.get('/api/beats/:id/preview', (req, res) => {
         return res.status(400).json({ error: 'Invalid beat ID' });
     }
     
+    // 🔥 ДОБАВЬ ЭТИ ЗАГОЛОВКИ
+    res.setHeader('Access-Control-Allow-Origin', 'https://beats-market2.onrender.com');
+    res.setHeader('Access-Control-Allow-Credentials', 'true');
+    
     db.get('SELECT audio_url FROM beats WHERE id = ?', [beatId], (err, beat) => {
         if (err || !beat) {
             return res.status(404).json({ error: 'Beat not found' });
         }
         
-        // 🔥 ИЗМЕНИ ЭТУ СТРОКУ
-        // Было: const audioPath = path.join(__dirname, 'public', beat.audio_url);
-        // Стало:
         const audioPath = path.join(__dirname, beat.audio_url);
         
         if (!fs.existsSync(audioPath)) {
@@ -1632,10 +1633,9 @@ app.get('/api/beats/:id/preview', (req, res) => {
         }
         
         const stat = fs.statSync(audioPath);
-        const fileSize = stat.size;
-        const previewBytes = Math.min(fileSize, 1.5 * 1024 * 1024);
+        const previewBytes = Math.min(stat.size, 1.5 * 1024 * 1024);
         
-        console.log(`📊 Preview: total=${(fileSize / 1024 / 1024).toFixed(2)}MB, preview=${(previewBytes / 1024 / 1024).toFixed(2)}MB`);
+        console.log(`📊 Preview: total=${(stat.size / 1024 / 1024).toFixed(2)}MB, preview=${(previewBytes / 1024 / 1024).toFixed(2)}MB`);
         
         res.writeHead(200, {
             'Content-Type': 'audio/mpeg',
