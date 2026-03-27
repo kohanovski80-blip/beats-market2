@@ -104,7 +104,7 @@ function updateNavbar() {
                         ${translate('cart')}<span class="cart-badge" id="cartCount">${cartCount}</span>
                     </button>
                     ${authManager.isAdmin() ? 
-                        `<button class="nav-btn" onclick="window.location.href='/admin'">${translate('admin')}</button>` : ''}
+                        `<button class="nav-btn" onclick="window.location.href='/admin.html'">${translate('admin')}</button>` : ''}
                     <button class="nav-btn" onclick="window.location.href='/profile'">${sanitizeInput(user.username)}</button>
                     <button class="nav-btn" onclick="authManager.logout()">${translate('logout')}</button>
                 </div>
@@ -531,7 +531,7 @@ async function loadProfilePage() {
             <button class="btn" onclick="updateProfile()">SAVE CHANGES</button>
             
             <div id="adminPanelBtn" style="margin-top: 20px; ${authManager.isAdmin() ? 'display: block;' : 'display: none;'}">
-                <button class="btn" onclick="window.location.href='/admin'">ADMIN PANEL</button>
+                <button class="btn" onclick="window.location.href='/admin.html'">ADMIN PANEL</button>
             </div>
         </div>
     `;
@@ -735,7 +735,7 @@ function forceUpdateLanguage(lang) {
                             ${translations[lang].cart || 'CART'}<span class="cart-badge" id="cartCount">${cartCount}</span>
                         </button>
                         ${authManager.isAdmin() ? 
-                            `<button class="nav-btn" onclick="window.location.href='/admin'">${translations[lang].admin || 'ADMIN'}</button>` : ''}
+                            `<button class="nav-btn" onclick="window.location.href='/admin.html'">${translations[lang].admin || 'ADMIN'}</button>` : ''}
                         <button class="nav-btn" onclick="window.location.href='/profile'">${sanitizeInput(user.username)}</button>
                         <button class="nav-btn" onclick="authManager.logout()">${translations[lang].logout || 'LOGOUT'}</button>
                     </div>
