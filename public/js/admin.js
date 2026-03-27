@@ -27,20 +27,29 @@ class AdminManager {
     // ============================================
     
     async init() {
-        if (!authManager || !authManager.isAdmin()) {
-            window.location.href = '/';
-            return false;
-        }
-        
-        this.isAdmin = authManager.isAdmin();
-        this.isCreator = authManager.isCreator();
-        
-        await this.loadAllData();
-        this.setupEventListeners();
-        this.renderAdminPanel();
-        
-        return true;
+    // Ждём, пока authManager загрузит пользователя
+    let attempts = 0;
+    while (!authManager || authManager.currentUser === undefined && attempts < 20) {
+        await new Promise(r => setTimeout(r, 100));
+        attempts++;
     }
+    
+    if (!authManager || !authManager.isAdmin()) {
+        console.log('❌ Not admin, redirecting');
+        window.location.href = '/';
+        return false;
+    }
+    
+    console.log('✅ Admin access granted');
+    this.isAdmin = authManager.isAdmin();
+    this.isCreator = authManager.isCreator();
+    
+    await this.loadAllData();
+    this.setupEventListeners();
+    this.renderAdminPanel();
+    
+    return true;
+}
     
     async loadAllData() {
         this.isLoading = true;
