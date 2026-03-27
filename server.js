@@ -1602,9 +1602,9 @@ app.get('/shop', (req, res) => res.sendFile(path.join(__dirname, 'public', 'shop
 app.get('/profile', (req, res) => res.sendFile(path.join(__dirname, 'public', 'profile.html')));
 app.get('/cart', (req, res) => res.sendFile(path.join(__dirname, 'public', 'cart.html')));
 app.get('/admin', (req, res) => res.sendFile(path.join(__dirname, 'public', 'admin.html')));
+app.get('/admin.html', (req, res) => res.sendFile(path.join(__dirname, 'public', 'admin.html'))); // ← ДОБАВЬ ЭТУ СТРОКУ
 app.get('/license', (req, res) => res.sendFile(path.join(__dirname, 'public', 'license.html')));
 app.get('/chat', (req, res) => res.sendFile(path.join(__dirname, 'public', 'chat.html')));
-app.get('/admin.html', (req, res) => res.sendFile(path.join(__dirname, 'public', 'admin.html')));
 
 // ============================================
 // ПРЕВЬЮ БИТА (30 секунд, бесплатно)
