@@ -1604,6 +1604,7 @@ app.get('/cart', (req, res) => res.sendFile(path.join(__dirname, 'public', 'cart
 app.get('/admin', (req, res) => res.sendFile(path.join(__dirname, 'public', 'admin.html')));
 app.get('/license', (req, res) => res.sendFile(path.join(__dirname, 'public', 'license.html')));
 app.get('/chat', (req, res) => res.sendFile(path.join(__dirname, 'public', 'chat.html')));
+app.get('/admin.html', (req, res) => res.sendFile(path.join(__dirname, 'public', 'admin.html')));
 
 // ============================================
 // ПРЕВЬЮ БИТА (30 секунд, бесплатно)
