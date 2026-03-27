@@ -129,12 +129,13 @@
             return;
         }
 
-        // 🔥 Проверка роли
-        //if (!authManager.isAdmin()) {
-           // alert('Нет доступа');          //закоментировал если что убрать боковыее скобочки слева
-            //window.location.href = '/';
-            //return;
-        //}
+        // Проверяем роль через fetch, чтобы убедиться, что данные загрузились
+       const userCheck = await fetch('/api/auth/me', { credentials: 'include' }).then(r => r.json());
+       if (!userCheck.user || (userCheck.user.role !== 'admin' && userCheck.user.role !== 'creator')) {
+       alert('Нет доступа');
+       window.location.href = '/';
+       return;
+}
 
         // запускаем админку
         await adminManager.init();
