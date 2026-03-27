@@ -1626,7 +1626,7 @@ app.get('/api/beats/:id/preview', (req, res) => {
             return res.status(404).json({ error: 'Beat not found' });
         }
         
-        const audioPath = path.join(__dirname, beat.audio_url);
+        const audioPath = path.join(__dirname, 'public', beat.audio_url);
         
         if (!fs.existsSync(audioPath)) {
             return res.status(404).json({ error: 'Audio file not found' });
