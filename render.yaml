@@ -1,0 +1,24 @@
+services:
+  - type: web
+    name: beats-market
+    runtime: node
+    plan: free
+    buildCommand: npm install
+    startCommand: node server.js
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 3000
+      - key: SESSION_SECRET
+        sync: false
+      - key: ADMIN_EMAIL
+        sync: false
+      - key: ADMIN_PASSWORD
+        sync: false
+      - key: DB_PATH
+        value: /opt/render/project/src/database/database.sqlite
+    disk:
+      name: beats-data
+      mountPath: /opt/render/project/src/database
+      sizeGB: 1

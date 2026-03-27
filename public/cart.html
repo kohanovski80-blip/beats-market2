@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes, viewport-fit=cover">
+    <meta name="theme-color" content="#000000">
+    <title>Beats Market - Cart</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <div id="navbar"></div>
+    <div class="container"></div>
+
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <h2 data-i18n="login">LOGIN</h2>
+            <input type="email" id="loginEmail" data-i18n="emailPlaceholder" placeholder="EMAIL" class="form-input">
+            <input type="password" id="loginPassword" data-i18n="passwordPlaceholder" placeholder="PASSWORD" class="form-input">
+            <button class="btn" onclick="handleLogin()" data-i18n="login">LOGIN</button>
+            <button class="nav-btn" onclick="closeModal()" data-i18n="close">CLOSE</button>
+        </div>
+    </div>
+
+    <div id="registerModal" class="modal">
+        <div class="modal-content">
+            <h2 data-i18n="register">REGISTER</h2>
+            <input type="text" id="regUsername" data-i18n="usernamePlaceholder" placeholder="USERNAME" class="form-input">
+            <input type="email" id="regEmail" data-i18n="emailPlaceholder" placeholder="EMAIL" class="form-input">
+            <input type="password" id="regPassword" data-i18n="passwordPlaceholder" placeholder="PASSWORD" class="form-input">
+            <button class="btn" onclick="handleRegister()" data-i18n="register">REGISTER</button>
+            <button class="nav-btn" onclick="closeModal()" data-i18n="close">CLOSE</button>
+        </div>
+    </div>
+
+    <script src="/js/player.js" defer></script>
+    <script src="/js/cart.js" defer></script>
+    <script src="/js/auth.js" defer></script>
+    <script src="/js/app.js" defer></script>
+    <script>
+        async function handleLogin() {
+            const email = document.getElementById('loginEmail').value;
+            const password = document.getElementById('loginPassword').value;
+            const result = await authManager.login(email, password);
+            if (result.success) {
+                closeModal();
+                location.reload();
+            } else {
+                alert(result.error);
+            }
+        }
+        
+        async function handleRegister() {
+            const username = document.getElementById('regUsername').value;
+            const email = document.getElementById('regEmail').value;
+            const password = document.getElementById('regPassword').value;
+            const result = await authManager.register(username, email, password);
+            if (result.success) {
+                alert('Registration successful! Please login.');
+                closeModal();
+            } else {
+                alert(result.error);
+            }
+        }
+    </script>
+</body>
+</html>

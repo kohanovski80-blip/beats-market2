@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes, viewport-fit=cover">
+    <meta name="theme-color" content="#000000">
+    <title>Beats Market - Admin Panel</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <div id="navbar"></div>
+    <div class="container admin-container">
+        <div id="adminContent">
+            <div class="loading-spinner">Loading admin panel...</div>
+        </div>
+    </div>
+
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <h2 data-i18n="login">LOGIN</h2>
+            <input type="email" id="loginEmail" data-i18n="emailPlaceholder" placeholder="EMAIL" class="form-input">
+            <input type="password" id="loginPassword" data-i18n="passwordPlaceholder" placeholder="PASSWORD" class="form-input">
+            <button class="btn" onclick="handleLogin()" data-i18n="login">LOGIN</button>
+            <button class="nav-btn" onclick="closeModal()" data-i18n="close">CLOSE</button>
+        </div>
+    </div>
+
+    <div id="registerModal" class="modal">
+        <div class="modal-content">
+            <h2 data-i18n="register">REGISTER</h2>
+            <input type="text" id="regUsername" data-i18n="usernamePlaceholder" placeholder="USERNAME" class="form-input">
+            <input type="email" id="regEmail" data-i18n="emailPlaceholder" placeholder="EMAIL" class="form-input">
+            <input type="password" id="regPassword" data-i18n="passwordPlaceholder" placeholder="PASSWORD" class="form-input">
+            <button class="btn" onclick="handleRegister()" data-i18n="register">REGISTER</button>
+            <button class="nav-btn" onclick="closeModal()" data-i18n="close">CLOSE</button>
+        </div>
+    </div>
+
+    <div id="adminModal" class="modal">
+        <div class="modal-content">
+            <h2 data-i18n="uploadNewBeat">📤 UPLOAD BEAT</h2>
+            <div class="form-group">
+                <label data-i18n="beatTitle">BEAT TITLE</label>
+                <input type="text" id="beatTitle" class="form-input" placeholder="e.g., Summer Vibes">
+            </div>
+            <div class="form-group">
+                <label data-i18n="price">PRICE (USD)</label>
+                <input type="number" id="beatPrice" class="form-input" placeholder="29.99">
+            </div>
+            <div class="form-group">
+                <label data-i18n="audioFile">AUDIO FILE (MP3, WAV, M4A)</label>
+                <input type="file" id="beatAudio" accept="audio/*" class="form-input">
+            </div>
+            <div class="form-group">
+                <label data-i18n="coverImage">COVER IMAGE (optional)</label>
+                <input type="file" id="beatCover" accept="image/*" class="form-input">
+                <small style="color: #666;" data-i18n="coverSize">Recommended size: 500x500px (JPG, PNG, GIF, WEBP)</small>
+            </div>
+            <button class="btn" onclick="adminManager.uploadBeat()" data-i18n="uploadNewBeat">UPLOAD BEAT</button>
+            <button class="nav-btn" onclick="closeModal()" data-i18n="cancel">CANCEL</button>
+        </div>
+    </div>
+
+    <div id="statsModal" class="modal">
+        <div class="modal-content">
+            <h2 data-i18n="statistics">📊 STATISTICS</h2>
+            <div id="statsContent"></div>
+            <button class="nav-btn" onclick="closeModal()" data-i18n="close">CLOSE</button>
+        </div>
+    </div>
+
+    <div id="rolesModal" class="modal">
+        <div class="modal-content">
+            <h2 data-i18n="manageRoles">👑 MANAGE ROLES</h2>
+            <div id="usersList"></div>
+            <button class="nav-btn" onclick="closeModal()" data-i18n="close">CLOSE</button>
+        </div>
+    </div>
+
+    <div id="resetStatsModal" class="modal">
+        <div class="modal-content">
+            <h2 data-i18n="resetStats">⚠️ RESET STATISTICS</h2>
+            <p>Are you sure you want to reset all statistics?</p>
+            <p style="color: #dc3545; font-size: 0.8rem; margin-top: 0.5rem;">This will permanently delete:</p>
+            <ul style="margin: 0.5rem 0 1rem 1.5rem; color: #666;">
+                <li>All purchase history</li>
+                <li>All activity logs</li>
+                <li>All review counts</li>
+                <li>All play counts</li>
+                <li>All sales statistics</li>
+            </ul>
+            <p style="font-weight: bold; margin-bottom: 1rem;">This action cannot be undone!</p>
+            <div class="admin-buttons" style="justify-content: center;">
+                <button class="btn" onclick="adminManager.resetStatistics()" style="background: #dc3545;" data-i18n="yesReset">YES, RESET ALL</button>
+                <button class="nav-btn" onclick="closeModal()" data-i18n="cancel">CANCEL</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="/js/player.js" defer></script>
+    <script src="/js/cart.js" defer></script>
+    <script src="/js/auth.js" defer></script>
+    <script src="/js/admin.js" defer></script>
+    <script src="/js/app.js" defer></script>
+    <script>
+
+     window.addEventListener('load', async () => {
+    try {
+        // ждём authManager
+        let attempts = 0;
+        while (typeof authManager === 'undefined' && attempts < 20) {
+            await new Promise(r => setTimeout(r, 100));
+            attempts++;
+        }
+
+        if (!authManager) {
+            console.error('authManager not found');
+            return;
+        }
+
+        // 🔥 ВАЖНО: загружаем пользователя
+        await authManager.init();
+
+        const user = authManager.getUser();
+
+        if (!user) {
+            alert('Сначала войди в аккаунт');
+            window.location.href = '/';
+            return;
+        }
+
+        // 🔥 Проверка роли
+        if (!authManager.isAdmin()) {
+            alert('Нет доступа');
+            window.location.href = '/';
+            return;
+        }
+
+        // запускаем админку
+        await adminManager.init();
+
+    } catch (e) {
+        console.error('Admin init error:', e);
+    }
+});
+</script>
+</body>
+</html>

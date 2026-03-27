@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes, viewport-fit=cover">
+    <meta name="theme-color" content="#000000">
+    <title>Beats Market - Buy License</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <style>
+        .license-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 6rem 2rem 2rem 2rem;
+            background: #ffffff;
+            min-height: 100vh;
+        }
+        
+        .license-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .license-header h1 {
+            font-size: 2rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 1rem;
+        }
+        
+        .license-header p {
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+        .license-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .license-card {
+            background: #f8f8f8;
+            border: 1px solid #e0e0e0;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .license-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            border-color: #28a745;
+        }
+        
+        .license-card h2 {
+            font-size: 2rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: #28a745;
+        }
+        
+        .license-card .price {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #000;
+            margin: 1rem 0;
+        }
+        
+        .license-card .price small {
+            font-size: 0.8rem;
+            color: #666;
+        }
+        
+        .license-card .description {
+            color: #666;
+            font-size: 0.85rem;
+            margin: 1rem 0;
+            line-height: 1.5;
+        }
+        
+        .license-card .features {
+            text-align: left;
+            margin: 1.5rem 0;
+            padding-left: 1.5rem;
+        }
+        
+        .license-card .features li {
+            margin: 0.5rem 0;
+            font-size: 0.85rem;
+            color: #333;
+        }
+        
+        .buy-license-btn {
+            background: #28a745;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 50px;
+            color: white;
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+            width: 100%;
+            margin-top: 1rem;
+        }
+        
+        .buy-license-btn:hover {
+            background: #218838;
+            transform: scale(1.02);
+        }
+        
+        .back-btn {
+            display: inline-block;
+            background: #000;
+            color: #fff;
+            padding: 0.6rem 1.5rem;
+            text-decoration: none;
+            margin-top: 2rem;
+            transition: all 0.3s ease;
+        }
+        
+        .back-btn:hover {
+            background: #333;
+        }
+        
+        .text-center {
+            text-align: center;
+        }
+        
+        @media (max-width: 768px) {
+            .license-grid {
+                grid-template-columns: 1fr;
+            }
+            .license-container {
+                padding: 5rem 1rem 1rem 1rem;
+            }
+            .license-card {
+                padding: 1.5rem;
+            }
+            .license-card h2 {
+                font-size: 1.5rem;
+            }
+            .license-card .price {
+                font-size: 1.3rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="navbar"></div>
+    
+    <div class="license-container">
+        <div class="license-header">
+            <h1 data-i18n="chooseLicense">CHOOSE YOUR LICENSE</h1>
+            <p>Select the license that best fits your needs</p>
+        </div>
+        
+        <div class="license-grid">
+            <!-- WAY License -->
+            <div class="license-card" data-license="way" data-price="150">
+                <h2 data-i18n="way">WAY</h2>
+                <div class="price">$150 <small>USD</small></div>
+                <ul class="features">
+                    <li>✓ Basic License</li>
+                    <li>✓ Non-exclusive rights</li>
+                    <li>✓ For personal use</li>
+                    <li>✓ Unlimited streams</li>
+                    <li>✓ Credit required</li>
+                </ul>
+                <button class="buy-license-btn" onclick="purchaseLicense('WAY', 150)" data-i18n="purchase">PURCHASE WAY</button>
+            </div>
+            
+            <!-- TRACKOUT License -->
+            <div class="license-card" data-license="trackout" data-price="300">
+                <h2 data-i18n="trackout">TRACKOUT</h2>
+                <div class="price">$300 <small>USD</small></div>
+                <ul class="features">
+                    <li>✓ Premium License</li>
+                    <li>✓ Non-exclusive rights</li>
+                    <li>✓ Commercial use allowed</li>
+                    <li>✓ Unlimited streams</li>
+                    <li>✓ Trackouts included</li>
+                </ul>
+                <button class="buy-license-btn" onclick="purchaseLicense('TRACKOUT', 300)" data-i18n="purchase">PURCHASE TRACKOUT</button>
+            </div>
+            
+            <!-- EXCLUSIVE License -->
+            <div class="license-card" data-license="exclusive" data-price="500">
+                <h2 data-i18n="exclusive">EXCLUSIVE</h2>
+                <div class="price">$500 <small>USD</small></div>
+                <ul class="features">
+                    <li>✓ Exclusive Rights</li>
+                    <li>✓ Full ownership</li>
+                    <li>✓ Unlimited commercial use</li>
+                    <li>✓ Master rights included</li>
+                    <li>✓ Beat removed from store</li>
+                </ul>
+                <button class="buy-license-btn" onclick="purchaseLicense('EXCLUSIVE', 500)" data-i18n="purchase">PURCHASE EXCLUSIVE</button>
+            </div>
+        </div>
+        
+        <div class="text-center">
+            <button class="back-btn" onclick="window.location.href='/shop'" data-i18n="back">← BACK TO SHOP</button>
+        </div>
+    </div>
+
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <h2 data-i18n="login">LOGIN</h2>
+            <input type="email" id="loginEmail" data-i18n="emailPlaceholder" placeholder="EMAIL" class="form-input">
+            <input type="password" id="loginPassword" data-i18n="passwordPlaceholder" placeholder="PASSWORD" class="form-input">
+            <button class="btn" onclick="handleLogin()" data-i18n="login">LOGIN</button>
+            <button class="nav-btn" onclick="closeModal()" data-i18n="close">CLOSE</button>
+        </div>
+    </div>
+
+    <div id="registerModal" class="modal">
+        <div class="modal-content">
+            <h2 data-i18n="register">REGISTER</h2>
+            <input type="text" id="regUsername" data-i18n="usernamePlaceholder" placeholder="USERNAME" class="form-input">
+            <input type="email" id="regEmail" data-i18n="emailPlaceholder" placeholder="EMAIL" class="form-input">
+            <input type="password" id="regPassword" data-i18n="passwordPlaceholder" placeholder="PASSWORD" class="form-input">
+            <button class="btn" onclick="handleRegister()" data-i18n="register">REGISTER</button>
+            <button class="nav-btn" onclick="closeModal()" data-i18n="close">CLOSE</button>
+        </div>
+    </div>
+
+    <script src="/js/player.js" defer></script>
+    <script src="/js/cart.js" defer></script>
+    <script src="/js/auth.js" defer></script>
+    <script src="/js/app.js" defer></script>
+    <script>
+        // Purchase license function
+        async function purchaseLicense(licenseType, price) {
+            if (!authManager.getUser()) {
+                alert('Please login to purchase a license');
+                authManager.showLoginModal();
+                return;
+            }
+            
+            const confirmPurchase = confirm(`Are you sure you want to purchase ${licenseType} license for $${price} USD?`);
+            
+            if (confirmPurchase) {
+                // Create a virtual beat for license purchase
+                const licenseBeat = {
+                    id: `license_${licenseType.toLowerCase()}`,
+                    title: `${licenseType} License`,
+                    price: price,
+                    description: `${licenseType} license for beats`
+                };
+                
+                // Add to cart and checkout
+                await cartManager.addItem(licenseBeat.id, licenseBeat.title, licenseBeat.price);
+                
+                // Proceed to checkout
+                const result = await cartManager.checkout('card');
+                if (result) {
+                    alert(`✅ ${licenseType} license purchased successfully! You will receive an email with details.`);
+                    window.location.href = '/shop';
+                }
+            }
+        }
+        
+        async function handleLogin() {
+            const email = document.getElementById('loginEmail').value;
+            const password = document.getElementById('loginPassword').value;
+            const result = await authManager.login(email, password);
+            if (result.success) {
+                closeModal();
+                location.reload();
+            } else {
+                alert(result.error);
+            }
+        }
+        
+        async function handleRegister() {
+            const username = document.getElementById('regUsername').value;
+            const email = document.getElementById('regEmail').value;
+            const password = document.getElementById('regPassword').value;
+            const result = await authManager.register(username, email, password);
+            if (result.success) {
+                alert('Registration successful! Please login.');
+                closeModal();
+            } else {
+                alert(result.error);
+            }
+        }
+    </script>
+</body>
+</html>
