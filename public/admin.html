@@ -130,11 +130,11 @@
         }
 
         // 🔥 Проверка роли
-        if (!authManager.isAdmin()) {
-            alert('Нет доступа');
-            window.location.href = '/';
-            return;
-        }
+        //if (!authManager.isAdmin()) {
+           // alert('Нет доступа');          //закоментировал если что убрать боковыее скобочки слева
+            //window.location.href = '/';
+            //return;
+        //}
 
         // запускаем админку
         await adminManager.init();
