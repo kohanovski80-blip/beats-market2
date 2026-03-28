@@ -27,27 +27,47 @@ class AdminManager {
     // ============================================
     
     async init() {
-    // Ждём, пока authManager загрузит пользователя
-    let attempts = 0;
-    while (!authManager || authManager.currentUser === undefined && attempts < 20) {
-        await new Promise(r => setTimeout(r, 100));
-        attempts++;
-    }
-    
-    if (!authManager || !authManager.isAdmin()) {
-        console.log('❌ Not admin, redirecting');
+    let user = null;
+
+    try {
+        const res = await fetch('/api/auth/me', {
+            credentials: 'include'
+        });
+
+        if (!res.ok) throw new Error('Not authorized');
+
+        const data = await res.json();
+        console.log('AUTH RESPONSE:', data);
+
+        if (!data.user) {
+            console.log('❌ No user in response');
+            window.location.href = '/';
+            return false;
+        }
+
+        user = data.user;
+
+    } catch (e) {
+        console.log('❌ Not logged in');
         window.location.href = '/';
         return false;
     }
-    
-    console.log('✅ Admin access granted');
-    this.isAdmin = authManager.isAdmin();
-    this.isCreator = authManager.isCreator();
-    
+
+    if (user.role !== 'admin' && user.role !== 'creator') {
+        console.log('❌ No access');
+        window.location.href = '/';
+        return false;
+    }
+
+    console.log('✅ Admin access granted', user);
+
+    this.isAdmin = user.role === 'admin';
+    this.isCreator = user.role === 'creator';
+
     await this.loadAllData();
     this.setupEventListeners();
     this.renderAdminPanel();
-    
+
     return true;
 }
     
@@ -807,13 +827,9 @@ const adminManager = new AdminManager();
 
 // Initialize on page load
 document.addEventListener('DOMContentLoaded', async () => {
-    const checkInterval = setInterval(async () => {
-        if (typeof authManager !== 'undefined' && authManager.currentUser !== undefined) {
-            clearInterval(checkInterval);
-            await adminManager.init();
-        }
-    }, 100);
-});
+    await adminManager.init();
+});            
+        
 
 if (typeof module !== 'undefined' && module.exports) {
     module.exports = AdminManager;
