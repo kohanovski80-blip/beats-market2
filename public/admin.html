@@ -129,13 +129,15 @@
             return;
         }
 
+        //этот блок временно закоментирован после проверки убрать боковые скобки
+        
         // Проверяем роль через fetch, чтобы убедиться, что данные загрузились
-       const userCheck = await fetch('/api/auth/me', { credentials: 'include' }).then(r => r.json());
-       if (!userCheck.user || (userCheck.user.role !== 'admin' && userCheck.user.role !== 'creator')) {
-       alert('Нет доступа');
-       window.location.href = '/';
-       return;
-}
+       //const userCheck = await fetch('/api/auth/me', { credentials: 'include' }).then(r => r.json());
+       //if (!userCheck.user || (userCheck.user.role !== 'admin' && userCheck.user.role !== 'creator')) {
+       //alert('Нет доступа');
+       //window.location.href = '/';
+       //return;
+//}
 
         // небольшая задержка для загрузки данных
 setTimeout(async () => {
