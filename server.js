@@ -285,8 +285,8 @@ app.use(session({
     proxy: true,
     cookie: {
         httpOnly: true,
-        secure: false,
-        sameSite: 'lax',
+        secure: isProd,       
+        sameSite: isProd ? 'none' : 'lax',
         maxAge: 30 * 24 * 60 * 60 * 1000
     }
 }));
