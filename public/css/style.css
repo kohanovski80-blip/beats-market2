@@ -1515,55 +1515,59 @@ html {
 /* ========== ТЕЛЕФОНЫ (480px - 767px) ========== */
 @media (min-width: 480px) and (max-width: 767px) {
     .beat-card {
-        min-height: auto;  /* убираем лишнюю высоту */
+        min-height: auto;
+        display: flex;
+        flex-direction: column;
     }
     
     .beat-cover {
-        height: 140px;  /* уменьшаем высоту обложки */
+        height: 100px !important;  /* сильно уменьшаем */
         aspect-ratio: 1 / 1;
     }
     
     .beat-content {
-        padding: 8px 6px 10px;  /* уменьшаем внутренние отступы */
+        padding: 4px 4px 6px !important;
     }
     
     .beat-title {
-        font-size: 0.7rem;
-        margin: 0 0 4px 0;
+        font-size: 0.65rem !important;
+        margin: 0 0 2px 0 !important;
+        line-height: 1.2;
     }
     
     .beat-price {
-        font-size: 0.65rem;
-        margin: 0 0 6px 0;
+        font-size: 0.6rem !important;
+        margin: 0 0 4px 0 !important;
     }
     
     .add-to-cart {
-        padding: 6px 4px;
-        font-size: 0.55rem;
+        padding: 4px 2px !important;
+        font-size: 0.5rem !important;
+        margin: 2px 0 !important;
     }
 }
 
 /* ========== МАЛЕНЬКИЕ ТЕЛЕФОНЫ (320px - 479px) ========== */
 @media (min-width: 320px) and (max-width: 479px) {
     .beat-cover {
-        height: 120px;  /* ещё меньше */
+        height: 85px !important;
     }
     
     .beat-content {
-        padding: 6px 4px 8px;
+        padding: 3px 3px 5px !important;
     }
     
     .beat-title {
-        font-size: 0.6rem;
+        font-size: 0.6rem !important;
     }
     
     .beat-price {
-        font-size: 0.55rem;
+        font-size: 0.55rem !important;
     }
     
     .add-to-cart {
-        padding: 5px 3px;
-        font-size: 0.5rem;
+        padding: 3px 2px !important;
+        font-size: 0.45rem !important;
     }
 }
 
