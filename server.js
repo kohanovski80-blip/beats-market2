@@ -801,7 +801,10 @@ app.get('/api/check', (req, res) => {
     });
 });
 
-app.get('/api/auth/me', (req, res) => {                    //временный
+app.get('/api/auth/me', (req, res) => {
+    // 🔥 отключаем кэш
+    res.set('Cache-Control', 'no-store');
+
     console.log('🍪 SESSION DEBUG:', {
         sessionID: req.sessionID,
         userId: req.session?.userId,
@@ -821,7 +824,7 @@ app.get('/api/auth/me', (req, res) => {                    //временный
             res.json({ user: { ...user, photo_url: fixPhotoUrl(user.photo_url) } });
         }
     );
-});                                              //Временный
+});
 
 app.post('/api/auth/logout', (req, res) => {
     if (req.session.userId) {
