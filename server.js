@@ -1805,10 +1805,24 @@ wss.on('connection', (ws) => {
 });
 
 // ============================================
+// STATIC FILES + SPA FALLBACK
+// ============================================
+
+const path = require("path");
+
+// статика (фронт)
+app.use(express.static(path.join(__dirname, "public")));
+
+// ============================================
 // ERROR HANDLING
 // ============================================
 
-app.use((req, res) => res.status(404).sendFile(path.join(__dirname, 'public', 'index.html')));
+// SPA fallback (вместо 404)
+app.use((req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'index.html'));
+});
+
+// обработка ошибок (оставляем как есть)
 app.use((err, req, res, next) => {
     console.error('Server error:', err);
     res.status(500).json({ error: 'Internal server error' });
