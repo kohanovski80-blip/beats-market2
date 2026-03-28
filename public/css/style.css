@@ -2435,3 +2435,49 @@ body:not(.home-page) .lang-btn:hover:not(.active) {
 .beat-card:hover::after {
     opacity: 0.5;
 }
+/* ============================================ */
+/* ПРИНУДИТЕЛЬНОЕ ПЕРЕОПРЕДЕЛЕНИЕ ДЛЯ ТЕЛЕФОНОВ */
+/* ============================================ */
+
+@media (max-width: 768px) {
+    .beat-card {
+        height: auto !important;
+        max-height: none !important;
+    }
+    
+    .beat-cover {
+        height: 100px !important;
+        min-height: 100px !important;
+        max-height: 100px !important;
+        background-size: cover !important;
+    }
+    
+    .beat-content {
+        padding: 6px 4px 8px !important;
+    }
+    
+    .beat-title {
+        font-size: 0.65rem !important;
+        margin: 0 0 2px 0 !important;
+        white-space: normal !important;
+        line-height: 1.2 !important;
+    }
+    
+    .beat-price {
+        font-size: 0.6rem !important;
+        margin: 0 0 4px 0 !important;
+    }
+    
+    .add-to-cart {
+        padding: 4px 2px !important;
+        font-size: 0.5rem !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .beat-cover {
+        height: 85px !important;
+        min-height: 85px !important;
+        max-height: 85px !important;
+    }
+}
