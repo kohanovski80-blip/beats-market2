@@ -801,7 +801,12 @@ app.get('/api/check', (req, res) => {
     });
 });
 
-app.get('/api/auth/me', (req, res) => {
+app.get('/api/auth/me', (req, res) => {                    //временный
+    console.log('🍪 SESSION DEBUG:', {
+        sessionID: req.sessionID,
+        userId: req.session?.userId,
+    });
+
     if (!req.session.userId) {
         return res.json({ user: null });
     }
@@ -816,7 +821,7 @@ app.get('/api/auth/me', (req, res) => {
             res.json({ user: { ...user, photo_url: fixPhotoUrl(user.photo_url) } });
         }
     );
-});
+});                                              //Временный
 
 app.post('/api/auth/logout', (req, res) => {
     if (req.session.userId) {
