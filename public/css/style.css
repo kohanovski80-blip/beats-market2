@@ -36,7 +36,7 @@ body.home-page::before {
     min-height: 100vh;
 }
 
-/* Shop Button - Bottom Right - ЗЕЛЁНАЯ ПОДСВЕТКА */
+/* Shop Button */
 .shop-btn {
     position: fixed;
     bottom: 2rem;
@@ -63,7 +63,7 @@ body.home-page::before {
     box-shadow: 0 4px 15px rgba(40, 167, 69, 0.4);
 }
 
-/* Instagram Button - Bottom Left - ЗЕЛЁНАЯ ПОДСВЕТКА */
+/* Instagram Button */
 .instagram-btn {
     position: fixed;
     bottom: 2rem;
@@ -93,7 +93,7 @@ body.home-page::before {
     fill: #28a745;
 }
 
-/* ========== NAVBAR (Gray Header) ========== */
+/* ========== NAVBAR ========== */
 .navbar {
     background: #f5f5f5;
     padding: 1rem 2rem;
@@ -177,15 +177,15 @@ body.home-page::before {
     min-height: 100vh;
 }
 
-/* ========== BEATS GRID ========== */
+/* ========== BEATS GRID (десктоп) ========== */
 .beats-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    grid-template-columns: repeat(4, 1fr);
     gap: 2rem;
     margin-top: 2rem;
 }
 
-/* ========== КНОПКА ADD TO CART (КАК ПЕРЕКЛЮЧАТЕЛЬ СТРАНИЦ) ========== */
+/* ========== КНОПКА ADD TO CART ========== */
 .add-to-cart {
     background: #000000;
     color: white;
@@ -203,7 +203,6 @@ body.home-page::before {
     letter-spacing: 0.5px;
 }
 
-/* Эффект при наведении — как переключатель страниц */
 .add-to-cart:hover {
     background: #ffffff;
     color: #000000;
@@ -441,7 +440,6 @@ body.home-page::before {
 /* ADMIN PANEL STYLES */
 /* ============================================ */
 
-/* Admin Tabs */
 .admin-tabs {
     display: flex;
     gap: 0.5rem;
@@ -472,7 +470,6 @@ body.home-page::before {
     border-bottom: 2px solid #000;
 }
 
-/* Dashboard Stats */
 .dashboard-stats {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -510,7 +507,6 @@ body.home-page::before {
     margin-top: 0.3rem;
 }
 
-/* Dashboard Charts */
 .dashboard-charts {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
@@ -531,7 +527,6 @@ body.home-page::before {
     margin-bottom: 1rem;
 }
 
-/* Quick Actions */
 .dashboard-quick-actions {
     background: #f8f8f8;
     border: 1px solid #e0e0e0;
@@ -551,7 +546,6 @@ body.home-page::before {
     flex-wrap: wrap;
 }
 
-/* Admin Tables */
 .admin-table-container {
     overflow-x: auto;
 }
@@ -599,7 +593,6 @@ body.home-page::before {
     color: #ff4444;
 }
 
-/* Status Badges */
 .status-badge {
     display: inline-block;
     padding: 0.2rem 0.5rem;
@@ -641,7 +634,6 @@ body.home-page::before {
     color: #7b1fa2;
 }
 
-/* Filters */
 .beats-filters,
 .users-filters {
     display: flex;
@@ -663,7 +655,6 @@ body.home-page::before {
     font-size: 0.9rem;
 }
 
-/* Activities List */
 .activities-list {
     max-height: 500px;
     overflow-y: auto;
@@ -696,7 +687,6 @@ body.home-page::before {
     margin-top: 0.2rem;
 }
 
-/* Admin Header */
 .admin-header {
     display: flex;
     justify-content: space-between;
@@ -899,7 +889,7 @@ body.home-page::before {
     color: #666;
 }
 
-/* Кнопка лицензии - круглая длинная по центру */
+/* License Button */
 .nav-center {
     flex: 1;
     text-align: center;
@@ -926,13 +916,12 @@ body.home-page::before {
     box-shadow: 0 4px 12px rgba(40, 167, 69, 0.4);
 }
 
-/* Стили для разделителя */
 .separator {
     color: #666;
     font-size: 1rem;
     margin: 0 0.5rem;
 }
-/* Скрыть глобальный плеер */
+
 .global-player {
     display: none !important;
 }
@@ -945,11 +934,6 @@ body.home-page::before {
 @media (max-width: 1024px) {
     .container {
         padding: 5rem 1.5rem 1.5rem 1.5rem;
-    }
-    
-    .beats-grid {
-        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-        gap: 1.5rem;
     }
     
     .cart-layout {
@@ -965,37 +949,60 @@ body.home-page::before {
         grid-template-columns: 1fr;
     }
 }
+
+/* Мобильные телефоны (до 768px) */
+@media (max-width: 768px) {
+    .navbar {
+        padding: 0.8rem 1rem;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+    }
     
-    /* Контейнер */
+    .nav-left {
+        order: 1;
+        gap: 0.5rem;
+    }
+    
+    .nav-center {
+        order: 3;
+        flex: 0 0 100%;
+        margin-top: 0.5rem;
+    }
+    
+    .nav-right {
+        order: 2;
+        gap: 0.8rem;
+    }
+    
+    .nav-left .nav-btn {
+        font-size: 0.75rem;
+    }
+    
+    .logo {
+        font-size: 0.85rem;
+        letter-spacing: 1px;
+    }
+    
+    .nav-right .nav-btn {
+        font-size: 0.7rem;
+    }
+    
+    .separator {
+        font-size: 0.8rem;
+        margin: 0 0.3rem;
+    }
+    
+    .license-btn {
+        padding: 0.5rem 1rem;
+        font-size: 0.7rem;
+        width: 100%;
+        max-width: 200px;
+    }
+    
     .container {
         padding: 5rem 1rem 1rem 1rem;
     }
     
-    /* Сетка битов */
-    .beats-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 1rem;
-    }
-    
-    .beat-card {
-        padding: 0;
-    }
-    
-    .beat-title {
-        font-size: 0.8rem;
-        margin: 0.5rem 0 0.2rem;
-    }
-    
-    .beat-price {
-        font-size: 0.7rem;
-    }
-    
-    .add-to-cart {
-        padding: 0.5rem;
-        font-size: 0.65rem;
-    }
-    
-    /* Кнопки на главной */
     .shop-btn {
         bottom: 1rem;
         right: 1rem;
@@ -1013,7 +1020,6 @@ body.home-page::before {
         height: 28px;
     }
     
-    /* Страница корзины */
     .cart-page {
         padding: 1rem;
     }
@@ -1047,10 +1053,6 @@ body.home-page::before {
         gap: 0.5rem;
     }
     
-    .cart-item-info {
-        width: 100%;
-    }
-    
     .cart-summary-section {
         position: static;
         margin-top: 1rem;
@@ -1065,7 +1067,6 @@ body.home-page::before {
         width: 100%;
     }
     
-    /* Страница профиля */
     .profile-card {
         padding: 1.5rem;
         margin: 0 1rem;
@@ -1090,7 +1091,6 @@ body.home-page::before {
         font-size: 0.7rem;
     }
     
-    /* Модальные окна */
     .modal-content {
         padding: 1.5rem;
         margin: 1rem;
@@ -1102,7 +1102,6 @@ body.home-page::before {
         margin-bottom: 1rem;
     }
     
-    /* Админ панель */
     .admin-tabs {
         gap: 0.3rem;
     }
@@ -1153,7 +1152,6 @@ body.home-page::before {
         width: 100%;
     }
     
-    /* Страница лицензий */
     .license-container {
         padding: 5rem 1rem 1rem 1rem;
     }
@@ -1191,7 +1189,6 @@ body.home-page::before {
         font-size: 0.75rem;
     }
     
-    /* Уведомления */
     .global-notification {
         bottom: 10px;
         right: 10px;
@@ -1201,14 +1198,15 @@ body.home-page::before {
         font-size: 0.75rem;
         padding: 0.8rem;
     }
-
+    
+    .page-btn {
+        padding: 0.3rem 0.6rem;
+        font-size: 0.7rem;
+    }
+}
 
 /* Очень маленькие телефоны (до 480px) */
 @media (max-width: 480px) {
-    .beats-grid {
-        grid-template-columns: 1fr;
-    }
-    
     .nav-left .nav-btn {
         font-size: 0.7rem;
     }
@@ -1295,6 +1293,7 @@ body.home-page::before {
         transform: scale(0.95);
     }
 }
+
 /* Кнопка избранного на обложке */
 .favorite-btn {
     position: absolute;
@@ -1324,9 +1323,6 @@ body.home-page::before {
     color: #ff4444;
 }
 
-.beat-cover {
-    position: relative;
-}
 /* Danger Button */
 .btn-danger {
     background: #dc3545 !important;
@@ -1347,6 +1343,7 @@ body.home-page::before {
     margin: 0.3rem 0;
     color: #666;
 }
+
 /* Pagination Styles */
 .pagination-container {
     display: flex;
@@ -1390,18 +1387,6 @@ body.home-page::before {
     color: #999;
 }
 
-.loading-spinner {
-    text-align: center;
-    padding: 2rem;
-    color: #666;
-}
-
-@media (max-width: 768px) {
-    .page-btn {
-        padding: 0.3rem 0.6rem;
-        font-size: 0.7rem;
-    }
-}
 /* Remember me checkbox */
 .remember-me {
     margin: 1rem 0;
@@ -1423,238 +1408,17 @@ body.home-page::before {
     cursor: pointer;
     accent-color: #28a745;
 }
-/* ============================================ */
-/* ПОЛНАЯ АДАПТАЦИЯ ДЛЯ ВСЕХ УСТРОЙСТВ */
-/* ============================================ */
-
-/* Базовые настройки */
-html {
-    -webkit-text-size-adjust: 100%;
-    -webkit-tap-highlight-color: transparent;
-}
-
-/* Контейнер */
-.container {
-    max-width: 1400px;
-    margin: 0 auto;
-    padding: 6rem 2rem 2rem 2rem;
-    background: #ffffff;
-    min-height: 100vh;
-}
-
-/* Сетка битов - по умолчанию 4 колонки на десктопе */
-.beats-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 2rem;
-    margin-top: 2rem;
-}
-
-/* ========== ПЛАНШЕТЫ (768px - 1024px) ========== */
-@media (min-width: 768px) and (max-width: 1024px) {
-    .container {
-        padding: 5rem 1.5rem 1.5rem 1.5rem;
-    }
-    
-    .beats-grid {
-        grid-template-columns: repeat(3, 1fr);
-        gap: 1.5rem;
-    }
-}
-
-/* ========== ТЕЛЕФОНЫ (480px - 767px) ========== */
-@media (min-width: 480px) and (max-width: 767px) {
-    .beat-card {
-        min-height: auto;
-        display: flex;
-        flex-direction: column;
-    }
-    
-    .beat-cover {
-        height: 100px !important;  /* сильно уменьшаем */
-        aspect-ratio: 1 / 1;
-    }
-    
-    .beat-content {
-        padding: 4px 4px 6px !important;
-    }
-    
-    .beat-title {
-        font-size: 0.65rem !important;
-        margin: 0 0 2px 0 !important;
-        line-height: 1.2;
-    }
-    
-    .beat-price {
-        font-size: 0.6rem !important;
-        margin: 0 0 4px 0 !important;
-    }
-    
-    .add-to-cart {
-        padding: 4px 2px !important;
-        font-size: 0.5rem !important;
-        margin: 2px 0 !important;
-    }
-}
-
-/* ========== МАЛЕНЬКИЕ ТЕЛЕФОНЫ (320px - 479px) ========== */
-@media (min-width: 320px) and (max-width: 479px) {
-    .beat-cover {
-        height: 85px !important;
-    }
-    
-    .beat-content {
-        padding: 3px 3px 5px !important;
-    }
-    
-    .beat-title {
-        font-size: 0.6rem !important;
-    }
-    
-    .beat-price {
-        font-size: 0.55rem !important;
-    }
-    
-    .add-to-cart {
-        padding: 3px 2px !important;
-        font-size: 0.45rem !important;
-    }
-}
-
-
-/* ========== САМЫЕ МАЛЕНЬКИЕ ТЕЛЕФОНЫ (до 319px) ========== */
-@media (max-width: 319px) {
-    .beats-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 0.5rem;
-    }
-    
-    .beat-title {
-        font-size: 0.55rem;
-    }
-    
-    .beat-price {
-        font-size: 0.5rem;
-    }
-    
-    .add-to-cart {
-        font-size: 0.4rem;
-        padding: 0.2rem 0.1rem;
-    }
-}
-
-/* ========== НАВИГАЦИЯ (адаптивная) ========== */
-@media (max-width: 768px) {
-    .navbar {
-        padding: 0.5rem 0.6rem;
-    }
-    
-    .nav-left .nav-btn {
-        font-size: 0.65rem;
-        padding: 0.2rem 0.3rem;
-    }
-    
-    .logo {
-        font-size: 0.7rem;
-        letter-spacing: 0.5px;
-    }
-    
-    .separator {
-        font-size: 0.7rem;
-        margin: 0 0.2rem;
-    }
-    
-    .nav-right {
-        gap: 0.4rem;
-    }
-    
-    .nav-right .nav-btn {
-        font-size: 0.55rem;
-        padding: 0.2rem 0.3rem;
-    }
-    
-    .license-btn {
-        padding: 0.25rem 0.5rem;
-        font-size: 0.55rem;
-        border-radius: 30px;
-    }
-    
-    .language-switcher {
-        gap: 0.2rem;
-        margin-right: 0.2rem;
-    }
-    
-    .lang-btn {
-        padding: 0.2rem 0.35rem;
-        font-size: 0.5rem;
-    }
-    
-    /* Пагинация */
-    .pagination {
-        gap: 0.3rem;
-    }
-    
-    .page-btn {
-        padding: 0.25rem 0.5rem;
-        font-size: 0.6rem;
-    }
-}
-
-/* ========== ГОРИЗОНТАЛЬНАЯ ОРИЕНТАЦИЯ ========== */
-@media (max-width: 768px) and (orientation: landscape) {
-    .beats-grid {
-        grid-template-columns: repeat(4, 1fr);
-        gap: 0.6rem;
-    }
-    
-    .beat-title {
-        font-size: 0.65rem;
-    }
-    
-    .add-to-cart {
-        font-size: 0.5rem;
-    }
-}
-
-/* ========== УЛУЧШЕНИЯ ДЛЯ TOUCH ========== */
-@media (hover: none) and (pointer: coarse) {
-    .add-to-cart,
-    .favorite-btn,
-    .page-btn,
-    .nav-btn,
-    .license-btn,
-    .lang-btn,
-    .beat-cover {
-        cursor: pointer;
-        touch-action: manipulation;
-    }
-    
-    .add-to-cart:active {
-        background: #0056b3;
-        transform: scale(0.97);
-    }
-    
-    .favorite-btn:active {
-        transform: scale(0.9);
-    }
-    
-    .beat-cover:active {
-        opacity: 0.7;
-    }
-}
 
 /* ============================================ */
 /* ПРЕМИАЛЬНЫЙ СВЕТЛЫЙ ФОН ДЛЯ ВСЕХ СТРАНИЦ, КРОМЕ ГЛАВНОЙ */
 /* ============================================ */
 
-/* Основной фон */
 html body:not(.home-page),
 body:not(.home-page) {
     background: linear-gradient(135deg, #f8f9fc 0%, #f0f2f8 50%, #eef2f9 100%) !important;
     position: relative;
 }
 
-/* Лёгкая текстура для премиальности */
 body:not(.home-page)::before {
     content: '';
     position: fixed;
@@ -1674,7 +1438,6 @@ body:not(.home-page)::before {
     z-index: 0;
 }
 
-/* Прозрачные контейнеры */
 html body:not(.home-page) .container,
 body:not(.home-page) .container,
 body:not(.home-page) .cart-page,
@@ -1685,7 +1448,6 @@ body:not(.home-page) .admin-container {
     background: transparent !important;
 }
 
-/* Белые карточки и элементы */
 html body:not(.home-page) .beat-card,
 body:not(.home-page) .beat-card,
 html body:not(.home-page) .cart-page,
@@ -1701,7 +1463,6 @@ body:not(.home-page) .dashboard-quick-actions {
     background: #ffffff !important;
 }
 
-/* УБРАН БЕЛЫЙ БЛОК - фон прозрачный */
 .beat-card-inner {
     position: relative;
     z-index: 2;
@@ -1714,185 +1475,8 @@ body:not(.home-page) .dashboard-quick-actions {
     height: 100%;
 }
 
-/* Эффект стекла до загрузки изображения */
-.beat-cover:not([style*="background-image"]) {
-    background: linear-gradient(135deg, 
-        rgba(255, 255, 255, 0.1) 0%,
-        rgba(255, 255, 255, 0.05) 25%,
-        rgba(255, 255, 255, 0.1) 50%,
-        rgba(255, 255, 255, 0.05) 75%,
-        rgba(255, 255, 255, 0.1) 100%);
-    backdrop-filter: blur(10px);
-    animation: glassShimmer 2s infinite;
-}
-
-/* Анимация перелива стекла */
-@keyframes glassShimmer {
-    0% {
-        background-position: -200% 0;
-    }
-    100% {
-        background-position: 200% 0;
-    }
-}
-
-/* После загрузки изображения - плавное появление */
-.beat-cover.loaded {
-    background-size: cover;
-    background-position: center;
-    animation: glassReveal 0.6s ease-out;
-}
-
-@keyframes glassReveal {
-    0% {
-        opacity: 0;
-        transform: scale(0.98);
-        filter: blur(4px);
-    }
-    100% {
-        opacity: 1;
-        transform: scale(1);
-        filter: blur(0);
-    }
-}
-
-/* Стеклянный слой поверх обложки при наведении */
-.beat-cover::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(135deg, 
-        rgba(255, 255, 255, 0.2) 0%,
-        rgba(255, 255, 255, 0) 50%,
-        rgba(255, 255, 255, 0.1) 100%);
-    pointer-events: none;
-    opacity: 0;
-    transition: opacity 0.4s ease;
-    border-radius: 20px 20px 0 0;
-    z-index: 5;
-}
-
-.beat-card:hover .beat-cover::after {
-    opacity: 1;
-}
-
-/* КОНТЕЙНЕР ДЛЯ ТЕКСТА И КНОПКИ - ПРИЖИМАЕМ К НИЗУ */
-.beat-content {
-    position: relative;
-    z-index: 6;
-    margin-top: auto;
-    padding: 16px 16px 20px;
-    background: linear-gradient(to top, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.2), transparent);
-    border-radius: 0 0 20px 20px;
-}
-
-/* НАЗВАНИЕ - внизу, белый цвет */
-.beat-title {
-    color: #ffffff;
-    font-weight: 600;
-    margin: 0 0 6px 0;
-    font-size: 1.1rem;
-    line-height: 1.4;
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
-}
-
-/* ЦЕНА - внизу, белый цвет */
-.beat-price {
-    color: #ffffff;
-    font-weight: 700;
-    margin: 0 0 12px 0;
-    font-size: 1.2rem;
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
-}
-
-/* ========== КНОПКА ADD TO CART (КАК ПЕРЕКЛЮЧАТЕЛЬ СТРАНИЦ) ========== */
-.add-to-cart {
-    background: #000000;
-    color: white;
-    border: none;
-    padding: 12px 20px;
-    margin: 0;
-    border-radius: 40px;
-    font-weight: 600;
-    font-size: 0.85rem;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    text-align: center;
-    display: block;
-    width: 100%;
-    letter-spacing: 0.5px;
-}
-
-/* Эффект при наведении — как переключатель страниц */
-.add-to-cart:hover {
-    background: #ffffff;
-    color: #000000;
-    transform: scale(1.02);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-    border: 1px solid rgba(0, 0, 0, 0.1);
-}
-
-/* ========== КНОПКА ИЗБРАННОГО ========== */
-.favorite-btn {
-    position: absolute;
-    top: 12px;
-    right: 12px;
-    background: rgba(0, 0, 0, 0.6);
-    border: none;
-    border-radius: 50%;
-    width: 34px;
-    height: 34px;
-    font-size: 1.1rem;
-    cursor: pointer;
-    backdrop-filter: blur(4px);
-    transition: all 0.2s ease;
-    z-index: 10;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
-}
-
-.favorite-btn:hover {
-    transform: scale(1.1);
-    background: rgba(0, 0, 0, 0.8);
-}
-
-.favorite-btn.active {
-    color: #ff4444;
-}
-
-
-/* Адаптивность для кнопки play */
-@media (max-width: 768px) {
-    .play-button {
-        width: 50px;
-        height: 50px;
-    }
-    
-    .play-button svg {
-        width: 24px;
-        height: 24px;
-    }
-}
-
-@media (max-width: 480px) {
-    .play-button {
-        width: 45px;
-        height: 45px;
-    }
-    
-    .play-button svg {
-        width: 20px;
-        height: 20px;
-    }
-}
-
 /* ============================================ */
-/* ПРЕМИАЛЬНЫЙ ЭФФЕКТ СТЕКЛА - ИЗОБРАЖЕНИЕ ЧЁТКОЕ, НО СЛИВАЕТСЯ С ФОНОМ */
+/* ПРЕМИАЛЬНЫЙ ЭФФЕКТ СТЕКЛА */
 /* ============================================ */
 
 .beat-cover {
@@ -1911,7 +1495,6 @@ body:not(.home-page) .dashboard-quick-actions {
     overflow: hidden;
 }
 
-/* Эффект стекла до загрузки изображения */
 .beat-cover:not([style*="background-image"]) {
     background: linear-gradient(135deg, 
         rgba(255, 255, 255, 0.15) 0%,
@@ -1938,7 +1521,6 @@ body:not(.home-page) .dashboard-quick-actions {
     }
 }
 
-/* После загрузки — чёткое изображение с плавным появлением */
 .beat-cover.loaded {
     background-size: cover;
     background-position: center;
@@ -1958,8 +1540,6 @@ body:not(.home-page) .dashboard-quick-actions {
     }
 }
 
-/* ========== ПРЕМИАЛЬНЫЙ СТЕКЛЯННЫЙ СЛОЙ ========== */
-/* Градиентная маска для плавного перехода изображения в фон */
 .beat-cover.loaded::before {
     content: '';
     position: absolute;
@@ -1979,7 +1559,6 @@ body:not(.home-page) .dashboard-quick-actions {
     transition: opacity 0.4s ease;
 }
 
-/* Дополнительный стеклянный слой для премиального блеска */
 .beat-cover.loaded::after {
     content: '';
     position: absolute;
@@ -1999,7 +1578,6 @@ body:not(.home-page) .dashboard-quick-actions {
     z-index: 3;
 }
 
-/* При наведении — усиление стеклянного эффекта и блеска */
 .beat-card:hover .beat-cover.loaded::before {
     background: linear-gradient(180deg,
         rgba(0, 0, 0, 0.15) 0%,
@@ -2099,7 +1677,6 @@ body:not(.home-page) .dashboard-quick-actions {
     margin-left: 0;
 }
 
-/* Анимация пульсации для кнопки play при наведении на карточку */
 .beat-card:hover .play-button {
     animation: premiumPulse 1.5s infinite;
 }
@@ -2116,7 +1693,7 @@ body:not(.home-page) .dashboard-quick-actions {
     }
 }
 
-/* ========== КОНТЕНТ ВНИЗУ (ПРЕМИАЛЬНЫЙ ГРАДИЕНТ) ========== */
+/* ========== КОНТЕНТ ВНИЗУ ========== */
 .beat-content {
     position: relative;
     z-index: 6;
@@ -2131,7 +1708,26 @@ body:not(.home-page) .dashboard-quick-actions {
     backdrop-filter: blur(2px);
 }
 
-/* ========== АДАПТИВНОСТЬ ========== */
+/* НАЗВАНИЕ */
+.beat-title {
+    color: #ffffff;
+    font-weight: 600;
+    margin: 0 0 6px 0;
+    font-size: 1.1rem;
+    line-height: 1.4;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+/* ЦЕНА */
+.beat-price {
+    color: #ffffff;
+    font-weight: 700;
+    margin: 0 0 12px 0;
+    font-size: 1.2rem;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+/* Адаптивность для кнопки play */
 @media (max-width: 768px) {
     .play-button {
         width: 52px;
@@ -2156,6 +1752,7 @@ body:not(.home-page) .dashboard-quick-actions {
         height: 22px;
     }
 }
+
 /* ============================================ */
 /* ПРЕМИАЛЬНЫЙ ПЕРЕКЛЮЧАТЕЛЬ ЯЗЫКА */
 /* ============================================ */
@@ -2204,7 +1801,6 @@ body:not(.home-page) .dashboard-quick-actions {
     color: #000000;
 }
 
-/* Для светлого фона на страницах, кроме главной */
 body:not(.home-page) .language-switcher {
     background: rgba(255, 255, 255, 0.9);
     border: 1px solid rgba(0, 0, 0, 0.1);
@@ -2222,6 +1818,17 @@ body:not(.home-page) .lang-btn.active {
 body:not(.home-page) .lang-btn:hover:not(.active) {
     background: rgba(0, 0, 0, 0.05);
     color: #1a1a2e;
+}
+
+@media (max-width: 768px) {
+    .language-switcher {
+        padding: 1px;
+    }
+    
+    .lang-btn {
+        padding: 0.3rem 0.6rem;
+        font-size: 0.6rem;
+    }
 }
 
 /* ============================================ */
