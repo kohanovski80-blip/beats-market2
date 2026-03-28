@@ -2225,10 +2225,17 @@ body:not(.home-page) .lang-btn:hover:not(.active) {
 }
 
 /* ============================================ */
-/* ФИНАЛЬНОЕ ПРИНУДИТЕЛЬНОЕ УМЕНЬШЕНИЕ КАРТОЧЕК ДЛЯ ТЕЛЕФОНОВ + 3D ЭФФЕКТ */
+/* ФИНАЛЬНОЕ ПРИНУДИТЕЛЬНОЕ УМЕНЬШЕНИЕ КАРТОЧЕК + 3D ЭФФЕКТ */
 /* ============================================ */
 
-@media (max-width: 768px) {
+/* Планшеты и телефоны (до 1024px) — 2 колонки */
+@media (max-width: 1024px) {
+    .beats-grid {
+        display: grid !important;
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+        gap: 1rem !important;
+    }
+    
     .beat-card {
         height: auto !important;
         min-height: auto !important;
@@ -2288,7 +2295,12 @@ body:not(.home-page) .lang-btn:hover:not(.active) {
     }
 }
 
+/* Маленькие телефоны (до 480px) */
 @media (max-width: 480px) {
+    .beats-grid {
+        gap: 0.6rem !important;
+    }
+    
     .beat-cover {
         height: 85px !important;
         min-height: 85px !important;
@@ -2306,5 +2318,30 @@ body:not(.home-page) .lang-btn:hover:not(.active) {
     .add-to-cart {
         padding: 3px 2px !important;
         font-size: 0.45rem !important;
+    }
+}
+
+/* Десктоп (больше 1024px) — 4 колонки */
+@media (min-width: 1025px) {
+    .beats-grid {
+        grid-template-columns: repeat(4, 1fr) !important;
+        gap: 2rem !important;
+    }
+    
+    .beat-cover {
+        height: 260px !important;
+    }
+    
+    .beat-title {
+        font-size: 1.1rem !important;
+    }
+    
+    .beat-price {
+        font-size: 1.2rem !important;
+    }
+    
+    .add-to-cart {
+        padding: 12px 20px !important;
+        font-size: 0.85rem !important;
     }
 }
