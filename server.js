@@ -1808,8 +1808,6 @@ wss.on('connection', (ws) => {
 // STATIC FILES + SPA FALLBACK
 // ============================================
 
-const path = require("path");
-
 // статика (фронт)
 app.use(express.static(path.join(__dirname, "public")));
 
