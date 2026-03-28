@@ -936,6 +936,7 @@ body.home-page::before {
 .global-player {
     display: none !important;
 }
+
 /* ============================================ */
 /* MOBILE ADAPTATION - RESPONSIVE DESIGN */
 /* ============================================ */
@@ -964,57 +965,6 @@ body.home-page::before {
         grid-template-columns: 1fr;
     }
 }
-
-/* Мобильные телефоны (до 768px) */
-@media (max-width: 768px) {
-    /* Навигация */
-    .navbar {
-        padding: 0.8rem 1rem;
-        flex-wrap: wrap;
-        gap: 0.5rem;
-    }
-    
-    .nav-left {
-        order: 1;
-        gap: 0.5rem;
-    }
-    
-    .nav-center {
-        order: 3;
-        flex: 0 0 100%;
-        margin-top: 0.5rem;
-    }
-    
-    .nav-right {
-        order: 2;
-        gap: 0.8rem;
-    }
-    
-    .nav-left .nav-btn {
-        font-size: 0.75rem;
-    }
-    
-    .logo {
-        font-size: 0.85rem;
-        letter-spacing: 1px;
-    }
-    
-    .nav-right .nav-btn {
-        font-size: 0.7rem;
-    }
-    
-    .separator {
-        font-size: 0.8rem;
-        margin: 0 0.3rem;
-    }
-    
-    /* Кнопка лицензии */
-    .license-btn {
-        padding: 0.5rem 1rem;
-        font-size: 0.7rem;
-        width: 100%;
-        max-width: 200px;
-    }
     
     /* Контейнер */
     .container {
@@ -1251,7 +1201,7 @@ body.home-page::before {
         font-size: 0.75rem;
         padding: 0.8rem;
     }
-}
+
 
 /* Очень маленькие телефоны (до 480px) */
 @media (max-width: 480px) {
@@ -1571,6 +1521,7 @@ html {
     }
 }
 
+
 /* ========== САМЫЕ МАЛЕНЬКИЕ ТЕЛЕФОНЫ (до 319px) ========== */
 @media (max-width: 319px) {
     .beats-grid {
@@ -1689,49 +1640,6 @@ html {
     
     .beat-cover:active {
         opacity: 0.7;
-    }
-}
-/* ПРИНУДИТЕЛЬНО 3 КОЛОНКИ ДЛЯ ВСЕХ ТЕЛЕФОНОВ */
-@media (max-width: 768px) {
-    .beats-grid {
-        display: grid !important;
-        grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
-        gap: 0.6rem !important;
-    }
-    
-    /* Убираем возможные конфликты */
-    .beats-grid > * {
-        min-width: 0 !important;
-        width: 100% !important;
-    }
-}
-
-@media (max-width: 480px) {
-    .beats-grid {
-        gap: 0.4rem !important;
-    }
-    
-    .beat-title {
-        font-size: 0.6rem !important;
-        white-space: nowrap !important;
-        overflow: hidden !important;
-        text-overflow: ellipsis !important;
-    }
-    
-    .beat-price {
-        font-size: 0.55rem !important;
-    }
-    
-    .add-to-cart {
-        font-size: 0.45rem !important;
-        padding: 0.3rem 0.1rem !important;
-        white-space: nowrap !important;
-    }
-    
-    .favorite-btn {
-        width: 22px !important;
-        height: 22px !important;
-        font-size: 0.75rem !important;
     }
 }
 
@@ -1957,52 +1865,6 @@ body:not(.home-page) .dashboard-quick-actions {
     color: #ff4444;
 }
 
-/* ========== АДАПТИВНОСТЬ ДЛЯ КАРТОЧЕК ========== */
-@media (max-width: 768px) {
-    .beat-card {
-        width: 280px;
-        min-height: 400px;
-    }
-    
-    .beat-cover {
-        height: 240px;
-    }
-    
-    .beat-title {
-        font-size: 1rem;
-    }
-    
-    .beat-price {
-        font-size: 1.1rem;
-    }
-    
-    .add-to-cart {
-        padding: 10px 16px;
-        font-size: 0.8rem;
-    }
-    
-    .beat-content {
-        padding: 14px 14px 18px;
-    }
-}
-
-@media (max-width: 480px) {
-    .beat-card {
-        width: 100%;
-        max-width: 300px;
-        margin: 0 auto;
-        min-height: 420px;
-    }
-    
-    .beat-cover {
-        height: 260px;
-    }
-    
-    .add-to-cart {
-        padding: 10px 14px;
-        font-size: 0.75rem;
-    }
-}
 
 /* Адаптивность для кнопки play */
 @media (max-width: 768px) {
@@ -2028,6 +1890,7 @@ body:not(.home-page) .dashboard-quick-actions {
         height: 20px;
     }
 }
+
 /* ============================================ */
 /* ПРЕМИАЛЬНЫЙ ЭФФЕКТ СТЕКЛА - ИЗОБРАЖЕНИЕ ЧЁТКОЕ, НО СЛИВАЕТСЯ С ФОНОМ */
 /* ============================================ */
@@ -2361,88 +2224,24 @@ body:not(.home-page) .lang-btn:hover:not(.active) {
     color: #1a1a2e;
 }
 
-/* Адаптивность */
-@media (max-width: 768px) {
-    .language-switcher {
-        padding: 1px;
-    }
-    
-    .lang-btn {
-        padding: 0.3rem 0.6rem;
-        font-size: 0.6rem;
-    }
-}
 /* ============================================ */
-/* 3D ЭФФЕКТ ДЛЯ ОБЛОЖЕК БИТОВ */
-/* ============================================ */
-
-.beat-card {
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    transform-style: preserve-3d;
-    perspective: 1000px;
-}
-
-.beat-card:hover {
-    transform: translateY(-8px) scale(1.02);
-    box-shadow: 0 20px 30px -15px rgba(0, 0, 0, 0.3);
-}
-
-.beat-cover {
-    transition: transform 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
-    transform-style: preserve-3d;
-}
-
-.beat-card:hover .beat-cover {
-    transform: rotateX(2deg) rotateY(2deg) scale(1.02);
-}
-
-/* Эффект глубины для изображения */
-.beat-cover::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(135deg, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0) 50%, rgba(0,0,0,0.1) 100%);
-    opacity: 0;
-    transition: opacity 0.3s ease;
-    pointer-events: none;
-    z-index: 2;
-    border-radius: 20px 20px 0 0;
-}
-
-.beat-card:hover .beat-cover::before {
-    opacity: 1;
-}
-
-/* 3D-тень при наведении */
-.beat-card::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 5%;
-    width: 90%;
-    height: 20px;
-    background: rgba(0, 0, 0, 0.2);
-    filter: blur(8px);
-    border-radius: 50%;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-    pointer-events: none;
-}
-
-.beat-card:hover::after {
-    opacity: 0.5;
-}
-/* ============================================ */
-/* ПРИНУДИТЕЛЬНОЕ ПЕРЕОПРЕДЕЛЕНИЕ ДЛЯ ТЕЛЕФОНОВ */
+/* ФИНАЛЬНОЕ ПРИНУДИТЕЛЬНОЕ УМЕНЬШЕНИЕ КАРТОЧЕК ДЛЯ ТЕЛЕФОНОВ + 3D ЭФФЕКТ */
 /* ============================================ */
 
 @media (max-width: 768px) {
     .beat-card {
         height: auto !important;
+        min-height: auto !important;
         max-height: none !important;
+        width: 100% !important;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        transform-style: preserve-3d;
+        perspective: 1000px;
+    }
+    
+    .beat-card:hover {
+        transform: translateY(-8px) scale(1.02);
+        box-shadow: 0 20px 30px -15px rgba(0, 0, 0, 0.3);
     }
     
     .beat-cover {
@@ -2450,6 +2249,13 @@ body:not(.home-page) .lang-btn:hover:not(.active) {
         min-height: 100px !important;
         max-height: 100px !important;
         background-size: cover !important;
+        background-position: center !important;
+        transition: transform 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+        transform-style: preserve-3d;
+    }
+    
+    .beat-card:hover .beat-cover {
+        transform: rotateX(2deg) rotateY(2deg) scale(1.02);
     }
     
     .beat-content {
@@ -2472,6 +2278,14 @@ body:not(.home-page) .lang-btn:hover:not(.active) {
         padding: 4px 2px !important;
         font-size: 0.5rem !important;
     }
+    
+    .favorite-btn {
+        width: 22px !important;
+        height: 22px !important;
+        font-size: 0.7rem !important;
+        top: 4px !important;
+        right: 4px !important;
+    }
 }
 
 @media (max-width: 480px) {
@@ -2479,5 +2293,18 @@ body:not(.home-page) .lang-btn:hover:not(.active) {
         height: 85px !important;
         min-height: 85px !important;
         max-height: 85px !important;
+    }
+    
+    .beat-title {
+        font-size: 0.6rem !important;
+    }
+    
+    .beat-price {
+        font-size: 0.55rem !important;
+    }
+    
+    .add-to-cart {
+        padding: 3px 2px !important;
+        font-size: 0.45rem !important;
     }
 }
