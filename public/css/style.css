@@ -1514,84 +1514,47 @@ html {
 
 /* ========== ТЕЛЕФОНЫ (480px - 767px) ========== */
 @media (min-width: 480px) and (max-width: 767px) {
-    .container {
-        padding: 5rem 1rem 1rem 1rem;
-    }
-    
-    .beats-grid {
-        grid-template-columns: repeat(3, 1fr);
-        gap: 0.8rem;
-    }
-    
-    /* Карточка бита */
     .beat-card {
-        background: #ffffff;
-        border: 1px solid #e0e0e0;
-        border-radius: 8px;
-        overflow: hidden;
+        min-height: auto;  /* убираем лишнюю высоту */
     }
     
     .beat-cover {
-        width: 100%;
+        height: 140px;  /* уменьшаем высоту обложки */
         aspect-ratio: 1 / 1;
+    }
+    
+    .beat-content {
+        padding: 8px 6px 10px;  /* уменьшаем внутренние отступы */
     }
     
     .beat-title {
         font-size: 0.7rem;
-        margin: 0.4rem 0.2rem 0.1rem;
-        text-align: center;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
+        margin: 0 0 4px 0;
     }
     
     .beat-price {
         font-size: 0.65rem;
-        margin: 0.1rem 0;
-        text-align: center;
+        margin: 0 0 6px 0;
     }
     
     .add-to-cart {
-        padding: 0.4rem 0.2rem;
+        padding: 6px 4px;
         font-size: 0.55rem;
-        margin: 0.3rem 0.3rem 0.4rem;
-        width: auto;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-    }
-    
-    .favorite-btn {
-        width: 24px;
-        height: 24px;
-        font-size: 0.8rem;
-        top: 4px;
-        right: 4px;
-    }
-    
-    audio {
-        height: 28px;
-    }
-    
-    .beat-cover::after {
-        font-size: 1.2rem;
     }
 }
 
 /* ========== МАЛЕНЬКИЕ ТЕЛЕФОНЫ (320px - 479px) ========== */
 @media (min-width: 320px) and (max-width: 479px) {
-    .container {
-        padding: 5rem 0.6rem 1rem 0.6rem;
+    .beat-cover {
+        height: 120px;  /* ещё меньше */
     }
     
-    .beats-grid {
-        grid-template-columns: repeat(3, 1fr);
-        gap: 0.5rem;
+    .beat-content {
+        padding: 6px 4px 8px;
     }
     
     .beat-title {
         font-size: 0.6rem;
-        margin: 0.3rem 0.1rem 0.05rem;
     }
     
     .beat-price {
@@ -1599,24 +1562,8 @@ html {
     }
     
     .add-to-cart {
-        font-size: 0.45rem;
-        padding: 0.25rem 0.1rem;
-    }
-    
-    .favorite-btn {
-        width: 20px;
-        height: 20px;
-        font-size: 0.7rem;
-        top: 2px;
-        right: 2px;
-    }
-    
-    audio {
-        height: 24px;
-    }
-    
-    .beat-cover::after {
-        font-size: 1rem;
+        padding: 5px 3px;
+        font-size: 0.5rem;
     }
 }
 
@@ -2420,4 +2367,67 @@ body:not(.home-page) .lang-btn:hover:not(.active) {
         padding: 0.3rem 0.6rem;
         font-size: 0.6rem;
     }
+}
+/* ============================================ */
+/* 3D ЭФФЕКТ ДЛЯ ОБЛОЖЕК БИТОВ */
+/* ============================================ */
+
+.beat-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transform-style: preserve-3d;
+    perspective: 1000px;
+}
+
+.beat-card:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 20px 30px -15px rgba(0, 0, 0, 0.3);
+}
+
+.beat-cover {
+    transition: transform 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+    transform-style: preserve-3d;
+}
+
+.beat-card:hover .beat-cover {
+    transform: rotateX(2deg) rotateY(2deg) scale(1.02);
+}
+
+/* Эффект глубины для изображения */
+.beat-cover::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0) 50%, rgba(0,0,0,0.1) 100%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+    z-index: 2;
+    border-radius: 20px 20px 0 0;
+}
+
+.beat-card:hover .beat-cover::before {
+    opacity: 1;
+}
+
+/* 3D-тень при наведении */
+.beat-card::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 5%;
+    width: 90%;
+    height: 20px;
+    background: rgba(0, 0, 0, 0.2);
+    filter: blur(8px);
+    border-radius: 50%;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+}
+
+.beat-card:hover::after {
+    opacity: 0.5;
 }
